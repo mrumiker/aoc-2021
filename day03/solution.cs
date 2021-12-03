@@ -68,8 +68,7 @@ class Program {
         }
 
         if (co2.Count > 1) {
-
-        
+     
           decimal count = 0;
           char winner = '0';
           foreach (string reading in co2) {
@@ -82,7 +81,6 @@ class Program {
             winner = '1';
           }
           co2.RemoveAll(reading => reading[i] != winner);
-          //Console.WriteLine(string.Join(", ", co2));
 
           if (co2.Count == 1) {
             scrubber = co2[0];
@@ -93,10 +91,10 @@ class Program {
       }
 
       Console.WriteLine(Convert.ToInt32(generator, 2) * Convert.ToInt32(scrubber, 2));   //Solution for Problem B
+    }
+
+    string[] data = File.ReadAllLines("day03data.txt");
+
+    diagnoseSub(data);
   }
-
-  string[] data = File.ReadAllLines("day03data.txt");
-
-  diagnoseSub(data);
-}
 }
