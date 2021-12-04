@@ -86,7 +86,6 @@ function markBoards(boards, num) {
       for (let i = 0; i < 5; i++) {
         if (num === row[i]) {
           row[i] = 'X';
-          winningNum = +num;
           numFound = true;
           break;
         }
