@@ -41,7 +41,7 @@ for (const num of numArr) {
   }
 }
 
-calcAnswer(winner); //Problem A answer
+calcAnswer(); //Problem A answer
 
 //Solve Problem B
 for (let i = numArr.indexOf(winningNum + '') + 1; i < numArr.length; i++) {
@@ -63,7 +63,7 @@ for (let i = numArr.indexOf(winningNum + '') + 1; i < numArr.length; i++) {
   
 }
 
-calcAnswer(winner); //Problem B answer
+calcAnswer(); //Problem B answer
 
 
 //Helper Functions
@@ -95,7 +95,7 @@ function markBoards(boards, num) {
   }
 } //when a number is called, the function marks the space on each board with an X  
 
-function calcAnswer(winner) {
+function calcAnswer() {
   for (let i = 0; i < 5; i++) {
     winner[i] = winner[i].filter(space => space !== 'X').map(numStr => +numStr);
   }
