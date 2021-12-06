@@ -35,12 +35,7 @@ let count = 0;
 for (const ends of verticals) {
   const [[x1, y1], [x2, y2]] = ends;
   if (!pointsObj[x1]) pointsObj[x1] = {};
-  let [top, bottom] = [0, 0];
-  if (y2 > y1) {
-    [top, bottom] = [y1, y2];
-  } else {
-    [top, bottom] = [y2, y1];
-  }
+  const [top, bottom] = y2 > y1 && [y1, y2] || [y2, y1]; 
   for (let i = top; i <= bottom; i++) {  
     pointsObj[x1][i] = (pointsObj[x1][i] || 0) + 1;
     if (pointsObj[x1][i] === 2) count++;
@@ -50,12 +45,7 @@ for (const ends of verticals) {
 //update pointsObj by counting all points touched by horizonatal vents
 for (const ends of horizontals) {
   const [[x1, y1], [x2, y2]] = ends;
-  let [left, right] = [0, 0];
-  if (x2 > x1) {
-    [left, right] = [x1, x2];
-  } else {
-    [left, right] = [x2, x1];
-  }
+  const [left, right] = x2 > x1 && [x1, x2] || [x2, x1];
   for (let i = left; i <= right; i++) {
     if (!pointsObj[i]) pointsObj[i] = {};
     pointsObj[i][y1] = (pointsObj[i][y1] || 0) + 1; 
@@ -69,12 +59,7 @@ console.log(count);
 //update pointsObj by counting all points touched by downhill diagonal vents
 for (const ends of downhillDiagonals) {
   const [[x1, y1], [x2, y2]] = ends;
-  let [left, right, y] = [0, 0, 0];
-  if (x2 > x1) {
-    [left, right, y] = [x1, x2, y1];
-  } else {
-    [left, right, y] = [x2, x1, y2];
-  }
+  let [left, right, y] = x2 > x1 && [x1, x2, y1] || [x2, x1, y2];
   for (let x = left; x <= right; x++) {
     if (!pointsObj[x]) pointsObj[x] = {};
     pointsObj[x][y] = (pointsObj[x][y] || 0) + 1; 
@@ -86,12 +71,7 @@ for (const ends of downhillDiagonals) {
 //update pointsObj by counting all points touched by uphill diagonal vents
 for (const ends of uphillDiagonals) {
   const [[x1, y1], [x2, y2]] = ends;
-  let [left, right, y] = [0, 0, 0];
-  if (x2 > x1) {
-    [left, right, y] = [x1, x2, y1];
-  } else {
-    [left, right, y] = [x2, x1, y2];
-  }
+  let [left, right, y] = x2 > x1 && [x1, x2, y1] || [x2, x1, y2];
   for (let x = left; x <= right; x++) {
     if (!pointsObj[x]) pointsObj[x] = {};
     pointsObj[x][y] = (pointsObj[x][y] || 0) + 1;
