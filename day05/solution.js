@@ -36,9 +36,9 @@ for (const ends of verticals) {
   const [[x1, y1], [x2, y2]] = ends;
   if (!pointsObj[x1]) pointsObj[x1] = {};
   const [top, bottom] = y2 > y1 && [y1, y2] || [y2, y1]; 
-  for (let i = top; i <= bottom; i++) {  
-    pointsObj[x1][i] = (pointsObj[x1][i] || 0) + 1;
-    if (pointsObj[x1][i] === 2) count++;
+  for (let y = top; y <= bottom; y++) {  
+    pointsObj[x1][y] = (pointsObj[x1][y] || 0) + 1;
+    if (pointsObj[x1][y] === 2) count++;
   }
 }
 
@@ -46,10 +46,10 @@ for (const ends of verticals) {
 for (const ends of horizontals) {
   const [[x1, y1], [x2, y2]] = ends;
   const [left, right] = x2 > x1 && [x1, x2] || [x2, x1];
-  for (let i = left; i <= right; i++) {
-    if (!pointsObj[i]) pointsObj[i] = {};
-    pointsObj[i][y1] = (pointsObj[i][y1] || 0) + 1; 
-    if (pointsObj[i][y1] === 2) count++;
+  for (let x = left; x <= right; x++) {
+    if (!pointsObj[x]) pointsObj[x] = {};
+    pointsObj[x][y1] = (pointsObj[x][y1] || 0) + 1; 
+    if (pointsObj[x][y1] === 2) count++;
   }
 }
 
