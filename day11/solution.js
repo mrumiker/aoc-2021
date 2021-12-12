@@ -32,26 +32,18 @@ function dumboOct(inputArr) {
 }
 
 function flash(arr, i, j) { // recursively flash 🐙🐙🐙 around a given 🐙
-  if (arr[i - 1]) {
-    for (let k = j - 1; k <= j + 1; k++) {
-      const current = arr[i - 1][k];
-      if (current !== undefined && arr[i - 1][k]++ === 9){
-        flash(arr, i - 1, k);
-      } 
-    }  
+  for (let m = i - 1; m <= i + 1; m++) {
+    const row = arr[m];
+    if (row) {
+      for (let n = j - 1; n <= j + 1; n++) {
+        const current = row[n];
+        if ((i !== m || j !== n) && current !== undefined && row[n]++ === 9) {
+          flash(arr, m, n);
+        }
+      }
+    }
   }
-
-  if (arr[i][j - 1] !== undefined && arr[i][j - 1]++ === 9) flash(arr, i, j - 1);
-
-  if (arr[i][j + 1] !== undefined && arr[i][j + 1]++ === 9) flash(arr, i, j + 1);
-
-  if (arr[i + 1]) {
-    for (let k = j - 1; k <= j + 1; k++) {
-      const current = arr[i + 1][k];
-      if (current !== undefined && arr[i + 1][k]++ === 9) flash(arr, i + 1, k);   
-    }  
-  }
-return;
+  return;
 }
 
 //Import Data
