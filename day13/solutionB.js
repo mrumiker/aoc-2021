@@ -39,8 +39,8 @@ function decodePacket(hexStr) {
         binaryNum += subString.slice(numStartIndex + 1, numStartIndex + 5);
         numStartIndex += 5;
       }
-      binaryNum += subString.slice(numStartIndex + 1, numStartIndex + 5);
-      startIndex += numStartIndex + 5; //when we get to the last group of bits in the Literal Value, add it to the end of our string
+      binaryNum += subString.slice(numStartIndex + 1, numStartIndex + 5); //when we get to the last group of bits in the Literal Value, which are marked with a '0', add it to the end of our string
+      startIndex += numStartIndex + 5; //set startIndex right after the end of our package so it is ready to parse the next package
       return parseInt(binaryNum, 2);//parse the binary string and return an int
 
     } else {// if the package is not a Literal Value...
