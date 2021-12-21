@@ -20,7 +20,6 @@ class Program {
      
         if (i != count - 1) {
           length += 2;
-          oldImage = new char[length, length];
           oldImage = newImage.Clone() as char[,];
           newImage = new char[length + 2, length + 2];
         }
